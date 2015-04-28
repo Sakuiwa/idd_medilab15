@@ -17,11 +17,8 @@ class ofApp : public ofBaseApp{
 		void mouseReleased(int x, int y, int button);
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
-		void gotMessage(ofMessage msg);
+		void gotMessage(ofMessage msg);class
     
-    static const int num = 100; //定数
-    ofVec3f position[num];
-    ofVec3f velocity[num];
-    ofColor color[num];
+    ofVec2f position;
 		
 };
