@@ -1,6 +1,6 @@
 //
-//  randomwalker.h
-//  randomWalker
+//  RandomWalker.h
+//  RandomWalker
 //
 //  Created by 岩瀬 さくら on 2015/04/28.
 //
@@ -11,7 +11,12 @@
 
 class RandomWalker {
 public:
+    RandomWalker();
+    void update();
+    void draw();
     
-private:
+ofVec2f position;
+    
+    //外部から操作できる
     
 };

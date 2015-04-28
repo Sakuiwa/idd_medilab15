@@ -1,14 +1,16 @@
-^{
-    
-}#include "ofApp.h"
+
+#include "ofApp.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofSetFrameRate(60);
     ofBackground(0);
     ofSetBackgroundAuto(false);
-    position.x = ofGetWidth() /2.0;
-    position.y = ofGetHeight() /2.0;
+    for (int i = 0; i <  num; i++) {
+        walker[i].position.x = ofRandom(ofGetWidth());
+        walker[i].position.y = ofRandom(ofGetHeight());
+    }
+    mesh.setMode(OF_PRIMITIVE_POINTS);
 }
 
 //--------------------------------------------------------------
@@ -18,11 +20,13 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofSetColor(255,10);
-    for (int i = 0; i < 10; i++) {
-        position.x += ofRandom(-1.0,1.0);
-        position.y += ofRandom(-1.0,1.0);
-        ofCircle(position.x,position.y,2);
+    ofSetColor(0,10);
+    ofRect(0, 0, ofGetWidth(), ofGetHeight());
+    mesh.clear();
+    for (int i = 0; i <  num; i++) {
+       // walker[i].draw();
+        mesh.addColor(ofFloatColor(1.0,1.0,1.0));
+        mesh.addVertex(walker[i].positiion);
     }
 }
 

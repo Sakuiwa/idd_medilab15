@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "RandomWalker.h"
 
 class ofApp : public ofBaseApp{
 
@@ -17,8 +18,10 @@ class ofApp : public ofBaseApp{
 		void mouseReleased(int x, int y, int button);
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
-		void gotMessage(ofMessage msg);class
+		void gotMessage(ofMessage msg);
+
     
-    ofVec2f position;
-		
+    static const int num = 3000;
+    RandomWalker walker[num];
+    ofVboMesh mesh;		
 };
