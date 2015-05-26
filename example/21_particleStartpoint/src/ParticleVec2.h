@@ -8,7 +8,11 @@ public:
     void draw();
     void addForce(ofVec2f force);
 <<<<<<< HEAD
+<<<<<<< HEAD
     void boundOffwalls();
+=======
+    void bounceOffWalls();
+>>>>>>> tado/master
 =======
     void bounceOffWalls();
 >>>>>>> tado/master

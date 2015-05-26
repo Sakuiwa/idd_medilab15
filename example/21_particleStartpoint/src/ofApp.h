@@ -21,9 +21,14 @@ public:
     void gotMessage(ofMessage msg);
     
 <<<<<<< HEAD
+<<<<<<< HEAD
     static const int NUM = 500;
     ParticleVec2 particle[NUM];
     ofVboMesh 
+=======
+    static const int NUM = 5000;
+    ParticleVec2 particle[NUM];
+>>>>>>> tado/master
 =======
     static const int NUM = 5000;
     ParticleVec2 particle[NUM];
