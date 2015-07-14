@@ -20,5 +20,6 @@ public:
     void gotMessage(ofMessage msg);
     
     ofShader shader;
-    
+    static const int NUM = 20;
+    float freq[NUM];
 };

@@ -4,15 +4,14 @@
 void ofApp::setup(){
     ofSetVerticalSync(true);
     ofSetFrameRate(60);
-    ofBackground(0);
 
     fft.setup();
     fft.setNumFFTBins(16);
     fft.setNormalize(true);
     
-    noise.freqR.set(0.2, 0.2);
-    noise.freqG.set(0.4, 0.4);
-    noise.freqB.set(0.8, 0.8);
+    noise.freqR.set(0.9, 0.9);
+    noise.freqG.set(0.3, 0.3);
+    noise.freqB.set(0.2, 0.2);
     noise.speed.set(ofRandom(1.0), ofRandom(2.0), ofRandom(4.0));
 
     gui.setup();
@@ -41,6 +40,7 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+
     noise.draw();
     if (showGui) {
         gui.draw();

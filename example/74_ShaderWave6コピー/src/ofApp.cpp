@@ -3,53 +3,29 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofSetFrameRate(60);
-    ofSetVerticalSync(true);
-    ofBackground(0);
-    // FFTのサンプル数(2の累乗)を指定して初期化
-    fft.setup(pow(2.0, 12.0));
-    // GUI
-    gui.setup();
-    gui.add(saturation.setup("Saturation", 0, 127, 255));
-    gui.loadFromFile("settings.xml");
+
+    // ランダムに周波数の配列を生成
+    for (int i = 0; i < NUM; i++) {
+        freq[i] = ofRandom(4.0, 10.0);
+    }
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    fft.update(); // FFT更新
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    // float型の配列にFFT結果を格納
-    vector<float> buffer;
-    buffer = fft.getBins();
-
-    // グラフに描画
-    ofPushMatrix();
-    ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
-    //ofSetLineWidth(ofGetWidth() / float(buffer.size()));
-    ofEnableBlendMode(OF_BLENDMODE_ADD);
-    for (int j = 0; j < 2; j++) {
-        for (int i = 0; i < buffer.size(); i++) {
-            // 色を設定
-            float hue = ofMap(i, 0, buffer.size(), 0, 160);
-            float br = ofMap(buffer[i], 0, 1, 0, 255);
-            ofColor col;
-            col.setHsb(hue, saturation, br);
-            ofSetColor(col);
-            // 右
-            float rx = ofMap(i, 0, buffer.size(), 0, ofGetWidth() / 2.0);
-            ofLine(rx, -ofGetWidth() / 2.0, rx, ofGetWidth() / 2.0);
-            // 左
-            float lx = ofMap(i, 0, buffer.size(), 0, -ofGetWidth() / 2.0);
-            ofLine(lx, -ofGetWidth() / 2.0, lx, ofGetWidth() / 2.0);
-        }
-        ofRotateZ(90);
-    }
-    ofPopMatrix();
+    shader.load("","shader.frag");
     
-    //GUI
-    gui.draw();
+    shader.begin();
+    shader.setUniform1f("u_time", ofGetElapsedTimef());
+    shader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
+    //freqの配列をShaderに渡す
+    shader.setUniform1fv("freq", freq, NUM);
+    ofRect(0,0,ofGetWidth(), ofGetHeight());
+    shader.end();
 }
 
 //--------------------------------------------------------------

@@ -23,8 +23,8 @@ void ofApp::draw() {
     float lowValue = ofMap(fft.getLowVal(), 0, 1, 0, level);
     float midValue = ofMap(fft.getMidVal(), 0, 1, 0, level);
     float highValue = ofMap(fft.getHighVal(), 0, 1, 0, level);
-    // 画面全体を塗る
-    ofSetColor(lowValue, midValue, highValue);
+
+    ofSetColor(highValue, midValue,lowValue);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
     // GUI
     gui.draw();
